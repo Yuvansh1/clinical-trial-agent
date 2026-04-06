@@ -3,6 +3,7 @@ MLflow Tracker: Logs every patient matching run as an MLflow experiment.
 Tracks inputs, match scores, reasoning, and final recommendations.
 """
 
+import os
 import json
 import mlflow
 import mlflow.pyfunc
@@ -13,8 +14,11 @@ from typing import Dict, List, Any
 EXPERIMENT_NAME = "clinical-trial-patient-matching"
 
 
-def setup_mlflow(tracking_uri: str = "./mlruns"):
-    mlflow.set_tracking_uri(tracking_uri)
+def setup_mlflow(tracking_uri: str = None):
+    uri = tracking_uri or os.getenv(
+        "MLFLOW_TRACKING_URI", "sqlite:///mlflow.db"
+    )
+    mlflow.set_tracking_uri(uri)
     mlflow.set_experiment(EXPERIMENT_NAME)
 
 
@@ -35,8 +39,7 @@ def log_matching_run(
     """
     setup_mlflow()
 
-    run_name = f"match_{patient_id}_{datetime.now().strftime('%H%M%S')}"
-    with mlflow.start_run(run_name=run_name) as run:
+    with mlflow.start_run(run_name=f"match_{patient_id}_{datetime.now().strftime('%H%M%S')}") as run:
 
         # --- Params ---
         mlflow.log_param("patient_id", patient_id)
@@ -49,8 +52,7 @@ def log_matching_run(
 
         # --- Metrics ---
         if candidate_trials:
-            scores = [t.get("similarity_score", 0) for t in candidate_trials]
-            avg_sim = sum(scores) / len(candidate_trials)
+            avg_sim = sum(t.get("similarity_score", 0) for t in candidate_trials) / len(candidate_trials)
             max_sim = max(t.get("similarity_score", 0) for t in candidate_trials)
             mlflow.log_metric("avg_similarity_score", round(avg_sim, 4))
             mlflow.log_metric("max_similarity_score", round(max_sim, 4))

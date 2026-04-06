@@ -1,0 +1,43 @@
+[
+  {
+    "trial_id": "NCT2024004",
+    "trial_name": "RARE-101: Enzyme Replacement for Gaucher Type 1",
+    "confidence_score": 1.0,
+    "eligible": true,
+    "score_breakdown": {
+      "age": "PASS (76 within 4-120)",
+      "therapeutic_area": "PASS (rare disease)",
+      "exclusion_screen": "PASS (no hard exclusions triggered)",
+      "labs": "PASS"
+    },
+    "flags": []
+  },
+  {
+    "trial_id": "NCT2024001",
+    "trial_name": "CARDIO-202: SGLT2 Inhibitor for Heart Failure",
+    "confidence_score": 0.85,
+    "eligible": true,
+    "score_breakdown": {
+      "age": "PASS (76 within 40-80)",
+      "therapeutic_area": "PARTIAL (rare disease vs cardiology)",
+      "exclusion_screen": "PASS (no hard exclusions triggered)",
+      "labs": "PASS"
+    },
+    "flags": []
+  },
+  {
+    "trial_id": "NCT2024003",
+    "trial_name": "DIAB-410: Dual GLP-1/GIP Agonist for T2DM",
+    "confidence_score": 0.6,
+    "eligible": true,
+    "score_breakdown": {
+      "age": "FAIL (76 outside 25-70)",
+      "therapeutic_area": "PARTIAL (rare disease vs diabetes)",
+      "exclusion_screen": "PASS (no hard exclusions triggered)",
+      "labs": "PASS"
+    },
+    "flags": [
+      "Age 76 outside range 25-70"
+    ]
+  }
+]

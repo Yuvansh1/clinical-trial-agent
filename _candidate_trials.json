@@ -1,0 +1,29 @@
+[
+  {
+    "trial_id": "NCT2024004",
+    "name": "RARE-101: Enzyme Replacement for Gaucher Type 1",
+    "therapeutic_area": "Rare Disease",
+    "phase": "Phase II",
+    "drug": "Velaglucerase alfa",
+    "similarity_score": 0.4621,
+    "document": "Trial: RARE-101: Enzyme Replacement for Gaucher Type 1\nTherapeutic Area: Rare Disease\nPhase: Phase II\nDrug: Velaglucerase alfa\nInclusion Criteria: Age 4 and above | Confirmed Gaucher disease type 1 by enzyme assay or genotyping | Symptomatic with splenomegaly or thrombocytopenia | Naive to enzyme replacement therapy\nExclusion Criteria: Gaucher disease type 2 or 3 (neuronopathic) | Active hepatitis B or C | Severe pulmonary hypertension | Hypersensitivity to imiglucerase\nPrimary Endpoint: Reduction in spleen volume at 12 months"
+  },
+  {
+    "trial_id": "NCT2024003",
+    "name": "DIAB-410: Dual GLP-1/GIP Agonist for T2DM",
+    "therapeutic_area": "Diabetes",
+    "phase": "Phase III",
+    "drug": "Tirzepatide 10mg weekly",
+    "similarity_score": 0.3211,
+    "document": "Trial: DIAB-410: Dual GLP-1/GIP Agonist for T2DM\nTherapeutic Area: Diabetes\nPhase: Phase III\nDrug: Tirzepatide 10mg weekly\nInclusion Criteria: Age 25-70 | Type 2 diabetes diagnosis for at least 1 year | HbA1c 7.5%-10.5% | BMI 25-45 kg/m\u00b2 | On metformin monotherapy or diet/exercise alone\nExclusion Criteria: Type 1 diabetes or LADA | eGFR < 30 mL/min | History of pancreatitis | Personal or family history of MTC | Gastroparesis\nPrimary Endpoint: HbA1c reduction at 26 weeks"
+  },
+  {
+    "trial_id": "NCT2024001",
+    "name": "CARDIO-202: SGLT2 Inhibitor for Heart Failure",
+    "therapeutic_area": "Cardiology",
+    "phase": "Phase III",
+    "drug": "Dapagliflozin 10mg",
+    "similarity_score": 0.3192,
+    "document": "Trial: CARDIO-202: SGLT2 Inhibitor for Heart Failure\nTherapeutic Area: Cardiology\nPhase: Phase III\nDrug: Dapagliflozin 10mg\nInclusion Criteria: Age 40-80 | Diagnosed with heart failure with reduced ejection fraction (HFrEF) | LVEF < 40% | NYHA Class II-III | On stable guideline-directed medical therapy for at least 3 months\nExclusion Criteria: Type 1 diabetes | eGFR < 20 mL/min | Systolic blood pressure < 90 mmHg | Recent MI within 3 months | Active urinary tract infection\nPrimary Endpoint: Composite of CV death and worsening heart failure"
+  }
+]

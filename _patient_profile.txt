@@ -1,0 +1,9 @@
+Patient profile:
+Age: 76, Sex: Female
+Primary condition: Fabry disease
+All conditions: Fabry disease
+Comorbidities: nan
+Current medications: Levothyroxine
+Lab values: glucocerebrosidase_activity: 4.83
+Pregnant: False
+Prior trial participation: True
