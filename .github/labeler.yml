@@ -1,0 +1,35 @@
+api:
+  - changed-files:
+    - any-glob-to-any-file: ["main.py"]
+
+agent:
+  - changed-files:
+    - any-glob-to-any-file: ["src/agents/**"]
+
+models:
+  - changed-files:
+    - any-glob-to-any-file: ["src/models/**"]
+
+utils:
+  - changed-files:
+    - any-glob-to-any-file: ["src/utils/**"]
+
+tests:
+  - changed-files:
+    - any-glob-to-any-file: ["tests/**"]
+
+deps:
+  - changed-files:
+    - any-glob-to-any-file: ["requirements.txt"]
+
+docker:
+  - changed-files:
+    - any-glob-to-any-file: ["Dockerfile", "Dockerfile.*", "docker-compose.yml"]
+
+docs:
+  - changed-files:
+    - any-glob-to-any-file: ["*.md", "docs/**"]
+
+ci:
+  - changed-files:
+    - any-glob-to-any-file: [".github/**"]

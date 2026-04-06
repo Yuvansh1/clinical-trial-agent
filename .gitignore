@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+coverage.xml
+data/*.csv
+data/chroma_db/
+data/test_chroma/
+mlruns/
+.DS_Store

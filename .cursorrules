@@ -1,0 +1,34 @@
+# Cursor Rules — Clinical Trial Patient Matching Agent
+
+## Stack
+- Python 3.11, FastAPI, LangGraph, ChromaDB, MLflow, Streamlit
+- Pydantic v2 for API models
+- pytest for testing
+
+## Code Style
+- Max line length: 100 characters
+- Use type hints on all function signatures
+- Docstrings on all public functions and classes
+- f-strings preferred over .format()
+
+## LangGraph Rules
+- AgentState must only contain JSON-serializable types (str, int, float, bool, list, dict, None)
+- Store DataFrames, numpy arrays, and model objects in _CACHE dict, not in state
+- Always call _to_python() on any dict/list containing numeric values before storing in state
+- Every node must handle its own exceptions and return {**state, "error": "..."} on failure
+
+## MLflow Rules
+- Always call setup_mlflow() before starting a run
+- Log params for inputs, metrics for numeric outcomes, artifacts for files
+- Use run_name format: f"match_{patient_id}_{timestamp}"
+
+## Testing Rules
+- Use scope="module" fixtures for expensive operations (data generation, model training)
+- Use unique thread_ids in agent tests to avoid cache collisions
+- Never mock the eligibility screener in integration tests — test it for real
+
+## File Ownership
+- matching_agent.py — agent orchestration only, no business logic
+- eligibility_screener.py — all scoring/eligibility logic lives here
+- vector_store.py — all ChromaDB interactions live here
+- mlflow_tracker.py — all MLflow calls live here
