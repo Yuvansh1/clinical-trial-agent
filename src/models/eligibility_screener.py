@@ -153,8 +153,10 @@ def score_patient_trial(patient: Dict, trial: Dict) -> Dict:
         "trial_id": trial.get("trial_id"),
         "trial_name": trial.get("name"),
         "confidence_score": round(min(score, 1.0), 3),
-        "eligible": score >= 0.55 and not any("FAIL" in str(v) and "exclusion" in k
-                                               for k, v in breakdown.items()),
+        "eligible": score >= 0.55 and not any(
+            "FAIL" in str(v) and "exclusion" in k
+            for k, v in breakdown.items()
+        ),
         "score_breakdown": breakdown,
         "flags": flags,
     }

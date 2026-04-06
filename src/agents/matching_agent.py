@@ -58,7 +58,6 @@ _CACHE: Dict[str, Any] = {}
 
 def _to_python(obj):
     """Recursively convert non-serializable types to Python primitives."""
-    import numpy as np
     if isinstance(obj, dict):
         return {k: _to_python(v) for k, v in obj.items()}
     if isinstance(obj, list):
@@ -188,7 +187,7 @@ def retrieve_candidates(state: AgentState) -> AgentState:
             **state,
             "candidate_trials": candidates,
             "messages": state["messages"] + [
-                AIMessage(content=f"Retrieved {len(candidates)} candidate trials via semantic search.")
+                AIMessage(content=f"Retrieved {len(candidates)} candidates via semantic search.")
             ],
         }
     except Exception as e:

@@ -4,15 +4,15 @@ Clinical Trial Patient Matching API
 
 import uuid
 from typing import Optional
-from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
 load_dotenv()
 
-from src.agents.matching_agent import run_agent
-from src.utils.mlflow_tracker import get_recent_runs
+from src.agents.matching_agent import run_agent  # noqa: E402
+from src.utils.mlflow_tracker import get_recent_runs  # noqa: E402
 
 app = FastAPI(
     title="Clinical Trial Patient Matching API",
@@ -77,4 +77,4 @@ def recent_runs(n: int = 10):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)  # nosec B104

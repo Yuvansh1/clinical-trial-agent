@@ -7,9 +7,6 @@ import json
 import pandas as pd
 import chromadb
 from chromadb.utils import embedding_functions
-from pathlib import Path
-
-
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 CHROMA_PATH = "./data/chroma_db"
 

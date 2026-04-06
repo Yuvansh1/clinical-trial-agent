@@ -35,7 +35,8 @@ def log_matching_run(
     """
     setup_mlflow()
 
-    with mlflow.start_run(run_name=f"match_{patient_id}_{datetime.now().strftime('%H%M%S')}") as run:
+    run_name = f"match_{patient_id}_{datetime.now().strftime('%H%M%S')}"
+    with mlflow.start_run(run_name=run_name) as run:
 
         # --- Params ---
         mlflow.log_param("patient_id", patient_id)
@@ -48,7 +49,8 @@ def log_matching_run(
 
         # --- Metrics ---
         if candidate_trials:
-            avg_sim = sum(t.get("similarity_score", 0) for t in candidate_trials) / len(candidate_trials)
+            scores = [t.get("similarity_score", 0) for t in candidate_trials]
+            avg_sim = sum(scores) / len(candidate_trials)
             max_sim = max(t.get("similarity_score", 0) for t in candidate_trials)
             mlflow.log_metric("avg_similarity_score", round(avg_sim, 4))
             mlflow.log_metric("max_similarity_score", round(max_sim, 4))
