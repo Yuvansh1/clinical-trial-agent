@@ -8,13 +8,13 @@
 [![Docker](https://img.shields.io/badge/docker-ghcr.io-blue)](https://github.com/Yuvansh1/clinical-trial-agent/pkgs/container/clinical-trial-agent)
 
 An **agentic AI system** that matches patients to clinical trials using:
-- 🤖 **LangGraph** — 8-node stateful agent orchestration with human-in-the-loop
-- 🔍 **RAG (ChromaDB + sentence-transformers)** — semantic search over trial eligibility criteria
-- 📐 **Rule-based eligibility screener** — age, lab values, hard exclusions with confidence scoring
-- 💬 **Gemini LLM** — clinical reasoning in plain English (falls back to rule-based without API key)
-- 📊 **MLflow** — full experiment tracking of every matching run
-- 🚀 **FastAPI + Streamlit** — REST API + interactive dashboard
-- 🐳 **Docker + GHCR** — containerized and published to GitHub Container Registry via CD pipeline
+- 🤖 **LangGraph** : 8-node stateful agent orchestration with human-in-the-loop
+- 🔍 **RAG (ChromaDB + sentence-transformers)** : semantic search over trial eligibility criteria
+- 📐 **Rule-based eligibility screener** : age, lab values, hard exclusions with confidence scoring
+- 💬 **Gemini LLM** : clinical reasoning in plain English (falls back to rule-based without API key)
+- 📊 **MLflow** : full experiment tracking of every matching run
+- 🚀 **FastAPI + Streamlit** : REST API + interactive dashboard
+- 🐳 **Docker + GHCR** : containerized and published to GitHub Container Registry via CD pipeline
 
 ---
 
@@ -55,7 +55,7 @@ clinical-trial-agent/
 
 ---
 
-## 🤖 LangGraph Agent — 8-Node Pipeline
+## 🤖 LangGraph Agent : 8-Node Pipeline
 
 ```
 START
@@ -90,10 +90,10 @@ START
 ```
 
 **LangGraph features used:**
-- `StateGraph` + `TypedDict` — clean serializable state across all nodes
-- `MemorySaver` checkpointer — runs resumable by `thread_id`
-- Human-in-the-loop gate — CRC/physician approval before finalizing
-- `_OBJECT_CACHE` pattern — non-serializable objects (DataFrames, numpy) stored outside state
+- `StateGraph` + `TypedDict` : clean serializable state across all nodes
+- `MemorySaver` checkpointer : runs resumable by `thread_id`
+- Human-in-the-loop gate : CRC/physician approval before finalizing
+- `_OBJECT_CACHE` pattern : non-serializable objects (DataFrames, numpy) stored outside state
 
 ---
 
@@ -125,13 +125,13 @@ uv pip install -r requirements.txt
 cp .env.example .env
 # Edit .env and add: GEMINI_API_KEY=your_key_here
 
-# Terminal 1 — API
+# Terminal 1 : API
 uvicorn main:app --reload --port 8000
 
-# Terminal 2 — Dashboard
+# Terminal 2 : Dashboard
 streamlit run streamlit_app.py
 
-# Terminal 3 — MLflow UI
+# Terminal 3 : MLflow UI
 mlflow ui --port 5000
 ```
 
@@ -140,7 +140,7 @@ mlflow ui --port 5000
 ## 🐳 Run with Docker
 
 ```bash
-# Pull latest image from GHCR
+# Pull latest image from GitHub Container Registry (GHCR)
 docker pull ghcr.io/yuvansh1/clinical-trial-agent:latest
 
 # Run
