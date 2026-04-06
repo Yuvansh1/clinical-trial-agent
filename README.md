@@ -6,12 +6,12 @@
 [![MLflow](https://img.shields.io/badge/MLflow-tracked-orange)](https://mlflow.org)
 
 An **agentic AI system** that matches patients to clinical trials using:
-- 🤖 **LangGraph** — 8-node stateful agent orchestration
-- 🔍 **RAG (ChromaDB + sentence-transformers)** — semantic search over trial eligibility criteria
-- 📐 **Rule-based eligibility screener** — age, lab values, hard exclusions
-- 💬 **Gemini LLM** — clinical reasoning in plain English
-- 📊 **MLflow** — full experiment tracking of every matching run
-- 🚀 **FastAPI + Streamlit** — REST API + interactive dashboard
+- 🤖 **LangGraph**: 8-node stateful agent orchestration
+- 🔍 **RAG (ChromaDB + sentence-transformers)**: semantic search over trial eligibility criteria
+- 📐 **Rule-based eligibility screener**: age, lab values, hard exclusions
+- 💬 **Gemini LLM**: clinical reasoning in plain English
+- 📊 **MLflow**: full experiment tracking of every matching run
+- 🚀 **FastAPI + Streamlit**: REST API + interactive dashboard
 
 ---
 

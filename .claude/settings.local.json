@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/Scripts/flake8 main.py src/ --max-line-length=100 --exclude=.venv,data,mlruns)",
+      "Bash(python -m flake8 main.py src/ --max-line-length=100 --exclude=.venv,data,mlruns)",
+      "Bash(.venv/Scripts/pip install:*)",
+      "Bash(python3 -m pip install flake8 bandit -q)",
+      "Bash(python -m pip install flake8 bandit -q)",
+      "Bash(/c/Python314/python -m pip install flake8 bandit -q)",
+      "Bash(/c/Python314/python -m flake8 main.py src/ --max-line-length=100 --exclude=.venv,data,mlruns)",
+      "Bash(/c/Python314/python -m bandit -r main.py src/ -ll --exclude .venv,data,mlruns)"
+    ]
+  }
+}
