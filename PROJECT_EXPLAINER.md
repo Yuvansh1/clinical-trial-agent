@@ -145,11 +145,3 @@ Every component maps to a real pharma/healthcare use case:
 - **Docker + CI/CD** → Validated software deployment in regulated environments
 
 ---
-
-## 💬 How to Explain This in an Interview
-
-**Simple version (30 seconds):**
-> "I built an AI agent that automatically matches patients to clinical trials. It uses semantic search to find relevant trials from a database, scores each one against the patient's lab values and medical history, then uses an LLM to explain the matches in clinical language : all tracked in MLflow with a human approval step before finalizing."
-
-**Technical version (2 minutes):**
-> "The core is a LangGraph agent with 8 nodes. It starts by embedding clinical trial eligibility criteria into ChromaDB using sentence-transformers. When a patient comes in, their profile is embedded and a cosine similarity search retrieves the top candidate trials. Each candidate goes through a rule-based screener that checks age ranges, lab values like HbA1c or LVEF, and hard exclusion criteria : producing a 0-1 confidence score. The Gemini LLM then generates clinical reasoning over the screened results. Every run is logged to MLflow with full params, metrics, and artifacts. The whole thing is exposed via FastAPI, containerized with Docker, and deployed via GitHub Actions CI/CD to GitHub Container Registry."
