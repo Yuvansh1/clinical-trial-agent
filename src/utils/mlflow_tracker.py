@@ -34,12 +34,12 @@ def log_matching_run(
 ) -> str:
     """
     Log a complete patient-trial matching run to MLflow.
-
     Returns the MLflow run_id.
     """
     setup_mlflow()
 
-    with mlflow.start_run(run_name=f"match_{patient_id}_{datetime.now().strftime('%H%M%S')}") as run:
+    run_name = f"match_{patient_id}_{datetime.now().strftime('%H%M%S')}"
+    with mlflow.start_run(run_name=run_name) as run:
 
         # --- Params ---
         mlflow.log_param("patient_id", patient_id)
@@ -52,12 +52,13 @@ def log_matching_run(
 
         # --- Metrics ---
         if candidate_trials:
-            avg_sim = sum(t.get("similarity_score", 0) for t in candidate_trials) / len(candidate_trials)
-            max_sim = max(t.get("similarity_score", 0) for t in candidate_trials)
-            mlflow.log_metric("avg_similarity_score", round(avg_sim, 4))
-            mlflow.log_metric("max_similarity_score", round(max_sim, 4))
+            scores = [t.get("similarity_score", 0) for t in candidate_trials]
+            mlflow.log_metric("avg_similarity_score", round(sum(scores) / len(scores), 4))
+            mlflow.log_metric("max_similarity_score", round(max(scores), 4))
 
-        mlflow.log_metric("match_rate", len(final_matches) / max(total_trials_searched, 1))
+        mlflow.log_metric(
+            "match_rate", len(final_matches) / max(total_trials_searched, 1)
+        )
         mlflow.log_metric("n_eligible_trials", len(final_matches))
 
         if final_matches:
@@ -67,32 +68,26 @@ def log_matching_run(
             mlflow.log_metric("avg_match_confidence", round(avg_confidence, 4))
 
         # --- Artifacts ---
-        # Patient profile
         with open("_patient_profile.txt", "w") as f:
             f.write(patient_profile)
         mlflow.log_artifact("_patient_profile.txt", "inputs")
 
-        # Candidate trials
         with open("_candidate_trials.json", "w") as f:
             json.dump(candidate_trials, f, indent=2)
         mlflow.log_artifact("_candidate_trials.json", "retrieval")
 
-        # Eligibility screening results
         with open("_eligibility_results.json", "w") as f:
             json.dump(eligibility_results, f, indent=2)
         mlflow.log_artifact("_eligibility_results.json", "screening")
 
-        # Final matches + recommendations
         with open("_final_matches.json", "w") as f:
             json.dump(final_matches, f, indent=2)
         mlflow.log_artifact("_final_matches.json", "output")
 
-        # Agent reasoning / LLM narrative
         with open("_agent_reasoning.txt", "w") as f:
             f.write(agent_reasoning)
         mlflow.log_artifact("_agent_reasoning.txt", "reasoning")
 
-        # Tags
         mlflow.set_tag("agent_version", "langgraph-v1")
         mlflow.set_tag("embedding_model", "all-MiniLM-L6-v2")
 
